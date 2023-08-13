@@ -1,11 +1,11 @@
-import { fetchCatByBreed, fetchBreeds } from './cat-api';
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
 import Notiflix from 'notiflix';
-Notiflix.Notify.init({
-  position: 'center-center',
-  width: '300px',
-});
+// Notiflix.Notify.init({
+//   position: 'center-center',
+//   width: '300px',
+// });
+import { fetchCatByBreed, fetchBreeds } from './cat-api';
 
 const refs = {
   select: document.querySelector('.breed-select'),
@@ -28,9 +28,11 @@ function pageLoading() {
         select: refs.select,
       });
     })
-
     .catch(err => {
       console.log(err);
+      refs.select.style.display = 'none';
+      refs.error.style.display = 'block';
+      Notiflix.Notify.failure(refs.error.textContent);
     })
 
     .finally(() => {
@@ -60,12 +62,13 @@ function onSelectChange(evt) {
   fetchCatByBreed(evt.target.value)
     .then(data => {
       console.log(data);
-      // refs.catInfo.insertAdjacentHTML('beforeend', createMarkupCat(data));
       const { url } = data[0];
       const { name, description, temperament } = data[0].breeds[0];
       refs.catInfo.innerHTML = `
             <div class="container">
-                <img src='${url}' alt='${name}' width=600 height=400/>
+               <div class="img-wrap"> 
+               <img src='${url}' alt='${name}' width="600px" height="400px"/>
+               </div>
                 <div class="info-container">
                     <h2>${name}</h2>
                     <p>${description}</p>

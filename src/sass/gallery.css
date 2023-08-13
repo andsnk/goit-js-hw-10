@@ -1,0 +1,68 @@
+body {
+  font-family: 'Quicksand', sans-serif;
+  /* background-color: antiquewhite; */
+}
+
+/* img {
+  width: 500px;
+  height: 300px;
+} */
+
+/* p {
+  margin: 0;
+} */
+
+.error {
+  display: none;
+}
+
+.container {
+  display: flex;
+  margin: 15px 0 0 0;
+}
+
+.img-wrap {
+  width: 600px;
+  height: 400px;
+  box-shadow: 4px 4px 6px 4px rgba(0, 0, 0, 0.2);
+}
+
+.info-container {
+  margin-left: 15px;
+  color: #575757;
+}
+
+.loader-wrap {
+  margin-top: 15px;
+  height: 15px;
+}
+
+.loader {
+  width: 100%;
+  height: 4.8px;
+  /* display: inline-block; */
+  position: relative;
+  overflow: hidden;
+}
+.loader::after {
+  content: '';
+  width: 96px;
+  height: 4.8px;
+  background: #575757;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  animation: hitZak 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes hitZak {
+  0% {
+    left: 0;
+    transform: translateX(-1%);
+  }
+  100% {
+    left: 100%;
+    transform: translateX(-99%);
+  }
+}
