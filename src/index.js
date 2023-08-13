@@ -72,7 +72,7 @@ function onSelectChange(evt) {
                 <div class="info-container">
                     <h2>${name}</h2>
                     <p>${description}</p>
-                    <p>${temperament}</p>
+                    <p><span class="temperament-text">Temperament:</span> ${temperament}</p>
                 </div>
             </div>`;
     })
